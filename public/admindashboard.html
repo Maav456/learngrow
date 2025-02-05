@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admindash.css">
+    <title>Notes Upload</title>
+</head>
+<body>
+    <div class="container">
+        <form id="uploadForm" enctype="multipart/form-data">
+            <textarea id="description" placeholder="Add a description about the notes..." required></textarea>
+            <input type="file" name="note" id="note" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <h2>Download Notes</h2>
+        <div id="downloadSection" class="download-section"></div>
+
+        <div id="viewSection" class="view-section"></div>
+        <div id="uploadStatus"></div>
+
+
+        <div class="content-container">
+            <iframe name="contentFrame" src="adminfeed.html"></iframe>
+        </div>
+        <script src="adminscript.js"></script>
+    </div>  </body>
+</html>

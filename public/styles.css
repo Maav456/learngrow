@@ -1,0 +1,145 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #fff; /* Changed text color to white for contrast */
+    overflow: hidden; /* Prevents scrollbars from appearing */
+}
+/* Cat Animation Styles */
+.cat-animation {
+    position: fixed; /* Fixed position to stay in the background */
+    top: 20%; /* Adjust vertical position */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the div */
+    width: 100px; /* Width of the cat image */
+    height: 100px; /* Height of the cat image */
+    background-image: url('cat.png'); /* Path to your cat image */
+    background-size: cover; /* Cover the entire div */
+    animation: float 5s ease-in-out infinite; /* Animation for floating effect */
+    z-index: -1; /* Ensure it stays behind other content */
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%) translateY(0); /* Start position */
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-20px); /* Move up */
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(0); /* Return to start */
+    }
+}
+
+/* Background Animation */
+@keyframes gradientAnimation {
+    0% {
+        background-color: #000;
+        background-image: linear-gradient(45deg, #1c1c1c, #333);
+    }
+    50% {
+        background-color: #000;
+        background-image: linear-gradient(45deg, #333, #1c1c1c);
+    }
+    100% {
+        background-color: #000;
+        background-image: linear-gradient(45deg, #1c1c1c, #333);
+    }
+}
+
+body {
+    animation: gradientAnimation 10s ease infinite; /* Apply the animation */
+}
+
+/* Headings */
+h1, h2 {
+    color: #fff; /* Ensure headings are white */
+}
+
+/* Form Styles */
+form {
+    background: rgba(28, 28, 28, 0.9); /* Darker background for the form with transparency */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Light shadow for contrast */
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input[type="text"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #444; /* Dark background for inputs */
+    color: #fff; /* White text for inputs */
+}
+
+input[type="text"]::placeholder, input[type="file"]::placeholder {
+    color: #bbb; /* Lighter placeholder text */
+}
+
+/* Buttons */
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+/* Download Notes Section */
+#subjectInput {
+    width: calc(100% - 22px); /* Adjust for button width */
+}
+
+#fetchNotes {
+    background-color: #007bff;
+}
+
+#fetchNotes:hover {
+    background-color: #0056b3;
+}
+
+/* Notes List Styles */
+#notesList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#notesList li {
+    background: #555; /* Darker background for notes list items */
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    body {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    form {
+        padding: 15px; /* Adjust form padding */
+    }
+
+    button {
+        padding: 12px; /* Increase button padding for better touch targets */
+    }
+
+    input[type="text"], input[type="file"] {
+        padding: 12px; /* Increase input padding */
+    }
+    
+}

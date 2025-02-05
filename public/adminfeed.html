@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Display</title>
+    <link rel="stylesheet" href="adminfeed.css">
+</head>
+<body>
+    <div class="feedback-container">  </div>
+        <h2>Feedback Received</h2>
+        <div id="feedbackList"></div>
+    </div>
+
+    <script>
+        function displayFeedback() {
+            const feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+            const feedbackContainer = document.getElementById("feedbackList");
+
+            if (feedbackList.length === 0) {
+                feedbackContainer.innerHTML = "<p>No feedback available.</p>";
+                return;
+            }
+
+            feedbackList.forEach((feedback) => {
+                const feedbackItem = document.createElement("div");
+                feedbackItem.className = "feedback-item";
+                feedbackItem.innerHTML = `
+                    <strong>Name:</strong> ${feedback.name}<br>
+                    <strong>Email:</strong> ${feedback.email}<br>
+                    <strong>Rating:</strong> ${feedback.rating}<br>
+                    <strong>Feedback:</strong> ${feedback.feedback}
+                `;
+                feedbackContainer.appendChild(feedbackItem);
+            });
+        }
+
+        displayFeedback();
+    </script>
+</body>
+</html>

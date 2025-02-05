@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">LearnGrow</a>
+            <ul class="nav-links">
+              <li><a href="index.html">Homepage</a></li>
+              <li><a href="https://gemini.google.com/" target="_blank">Learn with AI</a></li>
+              <li><a href="adminlogin.html" id="adminloginlink">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <div class="nav-container">
+            <h1>Feedback Form</h1>
+        </div>
+    </header>
+
+    <section class="notes-section">
+        <div class="form-container"> <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="">Select a rating</option>
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Good</option>
+                <option value="4">4 - Very Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="5" placeholder="Enter your feedback" required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <div id="thankYouMessage" class="hidden">
+            <h2>Thank You!</h2>
+            <p>Your feedback is really important to us</p>
+        </div></div>
+    </section>
+    <footer class="foot">
+        <p>&copy; 2023 LearnGrow. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+      // Email validation function
+      function validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+      }
+  
+      // Form submission handler
+      const feedbackForm = document.getElementById("feedbackForm");
+      feedbackForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+  
+        // Get form values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const rating = document.getElementById("rating").value;
+        const feedback = document.getElementById("feedback").value.trim();
+  
+        // Validate all fields
+        if (!name || !email || !rating || !feedback) {
+          alert("Please fill out all fields before submitting.");
+          return;
+        }
+  
+        // Validate email
+        if (!validateEmail(email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+  
+        // Prepare feedback data
+        const feedbackData = {
+          name: name,
+          email: email,
+          rating: rating,
+          feedback: feedback
+        };
+  
+        // Store feedback in localStorage
+        let feedbackList = JSON.parse(localStorage.getItem("feedbackList")) || [];
+        feedbackList.push(feedbackData);
+        localStorage.setItem("feedbackList", JSON.stringify(feedbackList));
+  
+        // Show the "Thank You" message
+        document.getElementById("thankYouMessage").classList.remove("hidden");
+  
+        // Reset the form
+        feedbackForm.reset();
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="stylesec.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">LearnGrow</a>
+            <button class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="yourfeedback.html">Your Feedback</a></li>
+                <li><a href="https://gemini.google.com/" target="_blank">Learn with AI</a></li>
+                <li><a href="adminlogin.html" id="adminloginlink">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1>Welcome to LearnGrow</h1>
+            <p>Your gateway to managing notes and user access.</p>
+            <div class="cta-buttons">
+                <a href="#viewSection" class="btn primary">View Notes</a>
+                <a href="Blog.html" class="btn secondary">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notes & Downloads Section -->
+    <section id="viewSection" class="notes-section">
+       <!-- <h2>Download Notes</h2> -->
+        <div id="notesContainer" class="notes-grid"></div>
+        <div id="downloadSection" class="download-section"></div>
+        <div id="viewSection" class="view-section"></div>
+        <div id="uploadStatus"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="foot">
+        <p>&copy; 2023 LearnGrow. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
