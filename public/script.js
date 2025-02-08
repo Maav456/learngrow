@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
           try {
-              const response = await fetch('/api/auth/login', {
+              const response = await fetch('https://learngrow.onrender.com/api/auth/login', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ async function displayUploadedFiles() {
   }
 
   try {
-      const response = await fetch("/api/notes/files");
+      const response = await fetch("https://learngrow.onrender.com/api/notes/files");
 
       if (!response.ok) {
           throw new Error("Failed to fetch files");
@@ -97,12 +97,12 @@ async function displayUploadedFiles() {
 
 // ✅ Function to View a File in the Browser
 function viewFile(filename) {
-  window.open(`/api/notes/view/${encodeURIComponent(filename)}`, "_blank");
+  window.open(`https://learngrow.onrender.com/api/notes/view/${encodeURIComponent(filename)}`, "_blank");
 }
 
 // ✅ Function to Download a File
 function downloadFile(filename) {
-  window.location.href = `/api/notes/download/${encodeURIComponent(filename)}`;
+  window.location.href = `https://learngrow.onrender.com/api/notes/download/${encodeURIComponent(filename)}`;
 }
 
 // ===============================
