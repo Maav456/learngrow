@@ -8,17 +8,17 @@ const upload = multer({ storage: multer.memoryStorage() }); // Store files in me
 const router = express.Router();
 
 // POST request to upload file
-router.post('/upload', upload.single('note'), uploadNote);
+router.post('https://learngrow.onrender.com/upload', upload.single('note'), uploadNote);
 
 // GET request to view all uploaded files
-router.get('/files', getFiles);
-router.get("/view/:filename", viewFile);
+router.get('https://learngrow.onrender.com/files', getFiles);
+router.get("https://learngrow.onrender.com/view/:filename", viewFile);
 
 
 // GET request to download a specific file by filename
-router.get('/download/:filename', downloadFile);
+router.get('https://learngrow.onrender.com/download/:filename', downloadFile);
 
 // DELETE request to delete a file by filename
-router.delete('/delete/:filename', deleteFile);
+router.delete('https://learngrow.onrender.com/delete/:filename', deleteFile);
 
 module.exports = router;
