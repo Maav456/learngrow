@@ -12,24 +12,41 @@ const { gfs, bucket } = require("./middleware/gridfsMiddleware");
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+
+
 
 // ✅ Connect to MongoDB with recommended options
-mongoose.connect(process.env.MONGODB_URI, {
+const mongoose = require('mongoose');
+
+const uri = process.env.MONGODB_URI;
+
+mongoose.connect(uri, {
+})
+.then(() => {
+  console.log('Connected to MongoDB');
+  // ... your application logic
+})
+.catch((err) => {
+  console.error('MongoDB connection error:', err); // Log the full error object
 });
 
 // ✅ Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://learngrow.onrender.com",  // Update with actual frontend URL
+  credentials: true, // Allow cookies if needed
+}));
+
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true })); // Added for form handling
 app.use(express.static('public'));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ✅ API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/notes', noteRoutes);
+app.use('https://learngrow.onrender.com/api/auth', authRoutes);
+app.use('https://learngrow.onrender.com/api/notes', noteRoutes);
 
 
-app.listen(port, () => {
-  console.log(`✅ Server listening on port ${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`✅ Server running on port ${port}`);
 });
+
