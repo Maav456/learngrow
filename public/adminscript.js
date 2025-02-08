@@ -47,7 +47,7 @@ function setupUploadForm() {
 
         try {
             // ✅ Send request to backend
-            const response = await fetch("/api/notes/upload", {
+            const response = await fetch("https://learngrow.onrender.com/api/notes/upload", {
                 method: "POST",
                 body: formData,
             });
@@ -81,7 +81,7 @@ async function displayUploadedFiles() {
 
     try {
         // Send GET request to fetch the list of files
-        const response = await fetch("/api/notes/files");
+        const response = await fetch("https://learngrow.onrender.com/api/notes/files");
 
         // Check if the request was successful
         if (!response.ok) {
@@ -123,12 +123,12 @@ async function displayUploadedFiles() {
 // ✅ Function to view a file in the browser
 // ✅ Function to view a file in the browser
 function viewFile(filename) {
-    window.open(`/api/notes/view/${encodeURIComponent(filename)}`, "_blank");
+    window.open(`https://learngrow.onrender.com/api/notes/view/${encodeURIComponent(filename)}`, "_blank");
 }
 
 // ✅ Function to download a file
 function downloadFile(filename) {
-    window.location.href = `/api/notes/download/${encodeURIComponent(filename)}`;
+    window.location.href = `https://learngrow.onrender.com/api/notes/download/${encodeURIComponent(filename)}`;
 }
 
 // ✅ Function to delete a file
@@ -136,7 +136,7 @@ async function deleteFile(filename) {
     if (!confirm(`Are you sure you want to delete "${filename}"?`)) return;
 
     try {
-        const response = await fetch(`/api/notes/delete/${filename}`, {
+        const response = await fetch(`https://learngrow.onrender.com/api/notes/delete/${filename}`, {
             method: "DELETE",
         });
 
