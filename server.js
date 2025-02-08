@@ -39,7 +39,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true })); // Added for form handling
 app.use(express.static('public'));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('https://learngrow.onrender.com/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ✅ API Routes
 app.use('https://learngrow.onrender.com/api/auth', authRoutes);
