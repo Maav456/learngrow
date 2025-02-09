@@ -16,7 +16,7 @@ const app = express();
 
 
 // ✅ Connect to MongoDB with recommended options
-const mongoose = require('mongoose');
+
 
 const uri = process.env.MONGODB_URI;
 
@@ -39,7 +39,6 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true })); // Added for form handling
 app.use(express.static('public'));
-app.use('https://learngrow.onrender.com/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ✅ API Routes
 app.use('https://learngrow.onrender.com/api/auth', authRoutes);
