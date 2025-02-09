@@ -16,6 +16,7 @@ const app = express();
 
 
 // ✅ Connect to MongoDB with recommended options
+const port = process.env.PORT || 0.0.0.0;
 
 
 const uri = process.env.MONGODB_URI;
