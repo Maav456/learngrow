@@ -11,12 +11,9 @@ const app = express();
 const port = process.env.PORT || 5000; // ✅ Correct PORT handling
 
 // ✅ MongoDB Connection
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/mydatabase"; // Fallback for local dev
+const uri = process.env.MONGODB_URI; 
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(uri)
 .then(() => console.log("✅ Connected to MongoDB"))
 .catch(err => console.error("❌ MongoDB Connection Error:", err));
 
