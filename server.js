@@ -1,52 +1,46 @@
+require('dotenv').config(); // ✅ Load environment variables first
 
 const express = require('express');
-const multer = require('multer');
-const path = require('path');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const noteRoutes = require('./routes/noteRoutes');
-const { gfs, bucket } = require("./middleware/gridfsMiddleware");
-
-require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 5000; // ✅ Correct PORT handling
 
-
-
-// ✅ Connect to MongoDB with recommended options
-const port = process.env.PORT || 0.0.0.0;
-
-
-const uri = process.env.MONGODB_URI;
+// ✅ MongoDB Connection
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/mydatabase"; // Fallback for local dev
 
 mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-.then(() => {
-  console.log('Connected to MongoDB');
-  // ... your application logic
-})
-.catch((err) => {
-  console.error('MongoDB connection error:', err); // Log the full error object
-});
+.then(() => console.log("✅ Connected to MongoDB"))
+.catch(err => console.error("❌ MongoDB Connection Error:", err));
 
-// ✅ Middleware
+// ✅ CORS Configuration
+const allowedOrigins = [
+  "https://learngrow.onrender.com", // Production frontend
+  "http://localhost:3000" // Local frontend development
+];
+
 app.use(cors({
-  origin: "https://learngrow.onrender.com",  // Update with actual frontend URL
-  credentials: true, // Allow cookies if needed
+  origin: allowedOrigins,
+  credentials: true,
 }));
 
+// ✅ Middleware
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true })); // Added for form handling
+app.use(express.urlencoded({ extended: true })); 
 app.use(express.static('public'));
 
 // ✅ API Routes
-app.use('https://learngrow.onrender.com/api/auth', authRoutes);
-app.use('https://learngrow.onrender.com/api/notes', noteRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/notes', noteRoutes);
 
-app.listen(port, () => {
+// ✅ Start Server
+app.listen(port, "0.0.0.0", () => {
   console.log(`✅ Server listening on port ${port}`);
 });
-
-
