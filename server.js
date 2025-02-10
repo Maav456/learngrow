@@ -45,8 +45,8 @@ app.use(express.static('public'));
 app.use('https://learngrow.onrender.com/api/auth', authRoutes);
 app.use('https://learngrow.onrender.com/api/notes', noteRoutes);
 
-
-app.listen(port, "0.0.0.0", () => {
-  console.log(`✅ Server running on port ${port}`);
+app.listen(port, () => {
+  console.log(`✅ Server listening on port ${port}`);
 });
+
 
