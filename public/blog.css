@@ -1,56 +1,216 @@
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #f9f3f3;
+  background-image: url("le-mucky-kSsBfk3O3Fo-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Navigation Bar */
+.nav-container {
+  width: 100%;
+  background-color: rgba(31, 41, 55, 0.8); /* Semi-transparent */
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li {
+  display: inline-block;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: #60a5fa;
+}
+
+/* Menu Toggle (for mobile) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px auto;
+  transition: 0.3s;
+}
+
+.rotate1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.rotate2 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(31, 41, 55, 0.9);
     text-align: center;
-    background: linear-gradient(to right, #6a11cb, #2575fc),  
-                url("le-mucky-kSsBfk3O3Fo-unsplash.jpg"); /* ✅ Add your image */
-    background-size: cover;
-    background-position: center;
-    background-blend-mode: overlay; /* ✅ Ensures color gradient blends smoothly */
-    color: white;
+    padding: 1rem 0;
+  }
+
+  .nav-links.active {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }
 
-.quote-container {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-    max-width: 500px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Main Container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; /* Push content below navbar */
 }
 
-h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+/* Card Container */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1.5rem;
 }
 
-blockquote {
-    font-size: 20px;
-    font-style: italic;
-    margin: 10px 0;
+/* Transparent Card */
+.card {
+  width: 100%;
+  max-width: 32rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+  backdrop-filter: blur(10px); /* Glassmorphism Effect */
 }
 
-p {
-    font-size: 18px;
-    font-weight: bold;
+/* Heading Styling */
+.card-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
 }
 
-button {
-    background: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
-    transition: 0.3s;
+/* Quote Styling */
+.quote-text {
+  font-size: 1.125rem;
+  color: #f9f3f3;
+  font-style: italic;
+  line-height: 1.75;
 }
 
-button:hover {
-    background: #f1c40f;
-    color: #000;
+/* Button Styling */
+.button {
+  margin-top: 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Spinner Animation */
+.loader {
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Card Padding */
+@media (max-width: 640px) {
+  .card {
+    padding: 1rem;
+  }
 }
